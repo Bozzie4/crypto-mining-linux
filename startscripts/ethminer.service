@@ -1,0 +1,15 @@
+[Unit]
+Description=Ethminer GPU Miner
+After=network.target
+
+[Service] 
+Wants=ethproxy.service
+Type=simple
+User=tbosmans
+PIDFile=/run/ethminer.pid
+ExecStart=/usr/local/bin/ethminer --farm-recheck 2000 -U -F http://127.0.0.1:8080/rig1
+ExecReload=/sbin/start-stop-daemon 
+
+[Install]
+WantedBy=multi-user.target
+

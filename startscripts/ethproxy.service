@@ -1,0 +1,15 @@
+[Unit]
+Description=Ethproxy
+After=network.target
+
+[Service] 
+WorkingDirectory=/home/tbosmans/eth-proxy-master/
+Type=simple
+User=tbosmans
+PIDFile=/run/ethproxy.pid
+ExecStart=/usr/bin/python eth-proxy.py
+ExecReload=/sbin/start-stop-daemon 
+
+[Install]
+WantedBy=multi-user.target
+
